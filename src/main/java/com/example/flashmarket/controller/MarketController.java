@@ -325,7 +325,7 @@ public class MarketController implements Initializable {
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setDataPhone(phones.get(i),myListener);
+                itemController.setData(phones.get(i),myListener);
 
                 if (column == 5) {
                     column = 0;
@@ -364,7 +364,7 @@ public class MarketController implements Initializable {
 
     public void fruitCategory(MouseEvent mouseEvent) {
 
-
+        grid = new GridPane();
         //fruits.addAll(getData());
         if (fruits.size() > 0) {
             setChosenFruit(fruits.get(0));
@@ -385,6 +385,7 @@ public class MarketController implements Initializable {
         int column = 0;
         int row = 1;
         try {
+
             for (int i = 0; i < fruits.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(HelloApplication.class.getResource("item.fxml"));
@@ -392,6 +393,9 @@ public class MarketController implements Initializable {
 
                 ItemController itemController = fxmlLoader.getController();
                 itemController.setData(fruits.get(i),myListener);
+
+
+                System.out.println(grid.getChildren().size());
 
                 if (column == 5) {
                     column = 0;
@@ -411,6 +415,11 @@ public class MarketController implements Initializable {
 
                 GridPane.setMargin(anchorPane, new Insets(8));
             }
+
+            for (int i=fruits.size(); i<grid.getChildren().size(); i++) {
+                grid.getChildren().remove(i);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
             //System.out.println(e.getMessage());
