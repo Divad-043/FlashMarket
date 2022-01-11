@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="394.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashmarket.controller.InitPreloader">
+   <children>
+      <Label fx:id="lblLoading" layoutX="8.0" layoutY="377.0" prefHeight="27.0" prefWidth="642.0" text="Loading..." AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <ProgressBar layoutY="371.0" prefHeight="18.0" prefWidth="682.0" />
+      <Label layoutX="341.0" layoutY="104.0" text="FLASH MARKET">
+         <font>
+            <Font name="Consolas" size="43.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="214.0" fitWidth="200.0" layoutX="60.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

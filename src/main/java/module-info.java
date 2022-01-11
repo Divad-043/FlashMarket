@@ -1,8 +1,18 @@
-module com.example.flashmarket {
+module FlashMarket {
+    requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
+    //requires javafx.web;
+    //requires com.fasterxml.jackson.core;
+    requires twilio;
+    requires org.json;
+    //requires transitive jakarta.activation;
+    //requires javax.activation;
 
-
-    opens com.example.flashmarket to javafx.fxml;
-    exports com.example.flashmarket;
+    exports com.example.flashmarket to javafx.graphics;
+    exports com.example.flashmarket.models;
+    exports com.example.flashmarket.controller;
+    opens com.example.flashmarket.controller to javafx.fxml;
+    opens com.example.flashmarket to javafx.fxml, javafx.graphics;
 }
