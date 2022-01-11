@@ -262,7 +262,7 @@ public class MarketController implements Initializable {
         myListener = new MyListener() {
             @Override
             public void onClickListener(Produit fruit) {
-                setChosenFruit((Fruit) fruit);
+                setChosenFruit( fruit);
             }
         };
 //        }
