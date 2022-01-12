@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         //Parent root = FXMLLoader.load(getClass().getResource("market.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("market.fxml"));
-        primaryStage.setTitle("Fruits Marker");
+        primaryStage.setTitle("FlashMarket");
         primaryStage.setScene(new Scene(fxmlLoader.load()));
         primaryStage.show();
     }

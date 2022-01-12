@@ -37,10 +37,11 @@ public class InscriptionController {
     public Button btnInscription;
     public Label labelError;
 
+    // When the button inscription is clicked
     public void inscriptionClick(ActionEvent actionEvent) throws Exception {
 
         URL url = new URL("https://tpteam3.000webhostapp.com/java/register.php");
-        int code = (int) (Math.random()*1000);
+        int code = (int) (Math.random()*100000);
 
         if (fieldVerification()) {
             if (Objects.equals(password.getText(), cpassword.getText())) {
@@ -68,7 +69,7 @@ public class InscriptionController {
                 conn.getOutputStream().write(postDataBytes);
 
                 // Add a number
-                addANumber();
+                //addANumber();
                 // send a sms
                 //sendSms(code);
 
@@ -109,6 +110,7 @@ public class InscriptionController {
     }
 
 
+    // verify if The textFields are empty
     public boolean fieldVerification() {
         if (Objects.equals(username.getText(), "") || Objects.equals(password.getText(), "") || Objects.equals(cpassword.getText(), "")
                 || Objects.equals(phone.getText(), "") || Objects.equals(address.getText(), "")){
@@ -118,17 +120,18 @@ public class InscriptionController {
     }
 
 
+    // to send a sms for confirmation of phone number
     public void sendSms(int code){
         final String ACCOUNT_SID = "AC9e1d71023ffc262498a885749b53c97e";
         final String AUTH_TOKEN = "94f1695586c22cb0efac94a8cbadbaa8";
+            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+            Message message = Message.creator(
+                            new com.twilio.type.PhoneNumber(phone.getText()),
+                            "MG172f5be4031c8885459301eab0043ad7",
+                            String.valueOf(code))
+                    .create();
 
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
-        Message message = Message.creator(new PhoneNumber(phone.getText()),
-                new PhoneNumber("+18645136946"),
-                String.valueOf(code)).create();
-
-        System.out.println(message.getSid());
+            System.out.println(message.getSid());
     }
 
     public void addANumber() {

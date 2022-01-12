@@ -13,6 +13,7 @@ module FlashMarket {
     exports com.example.flashmarket to javafx.graphics;
     exports com.example.flashmarket.models;
     exports com.example.flashmarket.controller;
+    exports test;
     opens com.example.flashmarket.controller to javafx.fxml;
     opens com.example.flashmarket to javafx.fxml, javafx.graphics;
 }
