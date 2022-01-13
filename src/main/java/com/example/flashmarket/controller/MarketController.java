@@ -673,6 +673,8 @@ public class MarketController implements Initializable {
 
         for (int i=0; i<images.size(); i++) {
 
+            System.out.println("telechargement de l'image "+i);
+
             ReadableByteChannel readChannel = Channels.newChannel(new URL(images.get(i)).openStream());
             FileOutputStream fileOS = new FileOutputStream("src/main/resources/com/example/flashmarket/tmp_file"+number+".jpg");
             FileChannel writeChannel = fileOS.getChannel();
