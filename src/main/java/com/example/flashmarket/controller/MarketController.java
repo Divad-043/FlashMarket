@@ -20,21 +20,30 @@ import javafx.scene.layout.VBox;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class MarketController implements Initializable {
+
+    public Label productName;
+    public Label productPrice;
+    public Label address;
+    public Label location;
+    public Label quantity;
     @FXML
     private VBox chosenFruitCard;
 
@@ -61,21 +70,23 @@ public class MarketController implements Initializable {
 //    }
 
     private List<Fruit> fruits = new ArrayList<>();
-    private List<Fruit> phones = new ArrayList<>();
+    private List<Produit> phones = new ArrayList<>();
     private List<PC> pcs = new ArrayList<>();
     private List<Land> lands = new ArrayList<>();
-    private List<House> houses = new ArrayList<>();
+    private List<Produit> houses = new ArrayList<>();
+    private String[] colors;
 
     private Image image;
     private MyListener myListener;
 
 
-
+    private static int nombre = 0;
 
 
     private void setChosenFruit(Produit fruit) {
-        fruitNameLable.setText(fruit.getName());
-        fruitPriceLabel.setText(Main.CURRENCY + fruit.getPrice());
+        System.out.println(fruit.getImgSrc());
+        productName.setText(fruit.getName());
+        productPrice.setText(Main.CURRENCY + fruit.getPrice());
         //image = new Image(HelloApplication.class.getResource("images/"+fruit.getImgSrc()).toExternalForm());
         //image = new Image(getClass().getResource(fruit.getImgSrc()).toExternalForm());
         image = new Image(fruit.getImgSrc().toString());
@@ -99,10 +110,36 @@ public class MarketController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        phones.addAll(Data.getDataPhone());
-        fruits.addAll(Data.getData());
-        pcs.addAll(Data.getDataPc());
-        lands.addAll(Data.getDataLand());
+//        phones.addAll(Data.getDataPhone());
+//        fruits.addAll(Data.getData());
+//        pcs.addAll(Data.getDataPc());
+//        lands.addAll(Data.getDataLand());
+//        Thread t1 = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+        colors = Data.color;
+                phones = sendRequestToServer("https://tpteam3.000webhostapp.com/java/listOfPhone.php");
+                houses = sendRequestToServer("https://tpteam3.000webhostapp.com/java/listproduct.php");
+
+                dataLoading(phones);
+//            }
+//        });
+//        Thread t2 = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+                //houses = sendRequestToServer("https://tpteam3.000webhostapp.com/java/listproduct.php");
+//            }
+//        });
+        //t1.start();
+//        t2.start();
+//
+//        try {
+//            t1.join();
+//            //t2.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         //houses.addAll(Data.getDataHouse());
         //gridPane = grid;
 //        fruits.addAll(getData());
@@ -264,107 +301,108 @@ public class MarketController implements Initializable {
 
     public void houseCategory(MouseEvent mouseEvent) {
 
-        gridPane = new GridPane();
+        dataLoading(houses);
+        //gridPane = new GridPane();
 
-        HttpURLConnection connection;
-        StringBuffer respnseContent = new StringBuffer();
-        BufferedReader reader;
-        String line;
-        try {
-            URL url = new URL("https://tpteam3.000webhostapp.com/java/listproduct.php");
-            connection = (HttpURLConnection) url.openConnection();
-
-            connection.setRequestMethod("POST");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
-
-            int status = connection.getResponseCode();
-            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                respnseContent.append(line);
-            }
-            reader.close();
-            System.out.println(respnseContent.toString());
-            JSONArray results = new JSONArray(respnseContent.toString());
-
-////            System.out.println(results);
-            for (int i=0; i<results.length(); i++) {
-
-                JSONObject result = results.getJSONObject(i);
-                System.out.println(result.toString());
-                //JSONObject result = results.getJSONObject(i);
-                String nom = result.getString("nomProd");
-                double prix = result.getDouble("prix");
-                String img = result.getString("url_img");
-                House produit = new House();
-
-                ReadableByteChannel readChannel = Channels.newChannel(new URL(img).openStream());
-                FileOutputStream fileOS = new FileOutputStream("src/main/resources/com/example/flashmarket/test/test.jpg");
-                FileChannel writeChannel = fileOS.getChannel();
-                writeChannel
-                        .transferFrom(readChannel, 0, Long.MAX_VALUE);
-                produit.setImgSrc(img);
-                produit.setPrice(prix);
-                produit.setName(nom);
-                produit.setColor("FFFFFF");
-                houses.add((House) produit);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //fruits.addAll(getData());
-        if (houses.size() > 0) {
-            setChosenFruit(houses.get(0));
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(Produit fruit) {
-                    setChosenFruit( fruit);
-                }
-            };
-        }
-
-        int column = 0;
-        int row = 1;
-        try {
-
-            for (int i = 0; i < houses.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(HelloApplication.class.getResource("item.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-
-                ItemController itemController = fxmlLoader.getController();
-                itemController.setData(houses.get(i),myListener);
-
-
-                System.out.println(gridPane.getChildren().size());
-
-                if (column == 5) {
-                    column = 0;
-                    row++;
-                }
-
-                gridPane.add(anchorPane, column++, row); //(child,column,row)
-                //set grid width
-                gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-                gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                gridPane.setMaxWidth(Region.USE_PREF_SIZE);
-
-                //set grid height
-                gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-                gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                gridPane.setMaxHeight(Region.USE_PREF_SIZE);
-
-                scroll.setContent(gridPane);
-                GridPane.setMargin(anchorPane, new Insets(8));
-            }
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        HttpURLConnection connection;
+//        StringBuffer respnseContent = new StringBuffer();
+//        BufferedReader reader;
+//        String line;
+//        try {
+//            URL url = new URL("https://tpteam3.000webhostapp.com/java/listproduct.php");
+//            connection = (HttpURLConnection) url.openConnection();
+//
+//            connection.setRequestMethod("POST");
+//            connection.setConnectTimeout(5000);
+//            connection.setReadTimeout(5000);
+//
+//            int status = connection.getResponseCode();
+//            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+//
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//                respnseContent.append(line);
+//            }
+//            reader.close();
+//            System.out.println(respnseContent.toString());
+//            JSONArray results = new JSONArray(respnseContent.toString());
+//
+//////            System.out.println(results);
+//            for (int i=0; i<results.length(); i++) {
+//
+//                JSONObject result = results.getJSONObject(i);
+//                System.out.println(result.toString());
+//                //JSONObject result = results.getJSONObject(i);
+//                String nom = result.getString("nomProd");
+//                double prix = result.getDouble("prix");
+//                String img = result.getString("url_img");
+//                House produit = new House();
+//
+//                ReadableByteChannel readChannel = Channels.newChannel(new URL(img).openStream());
+//                FileOutputStream fileOS = new FileOutputStream("src/main/resources/com/example/flashmarket/test/test.jpg");
+//                FileChannel writeChannel = fileOS.getChannel();
+//                writeChannel
+//                        .transferFrom(readChannel, 0, Long.MAX_VALUE);
+//                produit.setImgSrc(img);
+//                produit.setPrice(prix);
+//                produit.setName(nom);
+//                produit.setColor("FFFFFF");
+//                houses.add((House) produit);
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        //fruits.addAll(getData());
+//        if (houses.size() > 0) {
+//            setChosenFruit(houses.get(0));
+//            myListener = new MyListener() {
+//                @Override
+//                public void onClickListener(Produit fruit) {
+//                    setChosenFruit( fruit);
+//                }
+//            };
+//        }
+//
+//        int column = 0;
+//        int row = 1;
+//        try {
+//
+//            for (int i = 0; i < houses.size(); i++) {
+//                FXMLLoader fxmlLoader = new FXMLLoader();
+//                fxmlLoader.setLocation(HelloApplication.class.getResource("item.fxml"));
+//                AnchorPane anchorPane = fxmlLoader.load();
+//
+//                ItemController itemController = fxmlLoader.getController();
+//                itemController.setData(houses.get(i),myListener);
+//
+//
+//                System.out.println(gridPane.getChildren().size());
+//
+//                if (column == 5) {
+//                    column = 0;
+//                    row++;
+//                }
+//
+//                gridPane.add(anchorPane, column++, row); //(child,column,row)
+//                //set grid width
+//                gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+//                gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+//                gridPane.setMaxWidth(Region.USE_PREF_SIZE);
+//
+//                //set grid height
+//                gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+//                gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+//                gridPane.setMaxHeight(Region.USE_PREF_SIZE);
+//
+//                scroll.setContent(gridPane);
+//                GridPane.setMargin(anchorPane, new Insets(8));
+//            }
+//
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void dressesCategory(MouseEvent mouseEvent) {
@@ -532,6 +570,159 @@ public class MarketController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    // Methode qui permet d'envoyer une requete au serveur et obtient la reponse sous forme de liste de produit
+    public List<Produit> sendRequestToServer(String url) {
+
+        HttpURLConnection connection;
+        StringBuffer respnseContent = new StringBuffer();
+        BufferedReader reader;
+        String line;
+        List<Produit> resultOfRequest = new ArrayList<>();
+
+        try {
+            respnseContent = urlRequest(url);
+            //URL url = new URL("https://tpteam3.000webhostapp.com/java/listproduct.php");
+//            URL url = new URL(urlRequest);
+//            connection = (HttpURLConnection) url.openConnection();
+//
+//            connection.setRequestMethod("POST");
+//            connection.setConnectTimeout(5000);
+//            connection.setReadTimeout(5000);
+//
+//            int status = connection.getResponseCode();
+//            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+//
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//                respnseContent.append(line);
+//            }
+//            reader.close();
+            System.out.println(respnseContent.toString());
+            JSONArray results = new JSONArray(respnseContent.toString());
+
+            ArrayList<String> images = new ArrayList<>();
+
+            for (int i=0; i<results.length(); i++) {
+                JSONObject result = results.getJSONObject(i);
+                System.out.println(result.toString());
+
+                String img = result.getString("url_img");
+                images.add(new String(img));
+            }
+
+            addFiles(images);
+
+            System.out.println(results.length());
+            //nombre = 0;
+            int j = 0;
+            for (int i=0; i<results.length(); i++) {
+
+                nombre++;
+
+                JSONObject result = results.getJSONObject(i);
+                System.out.println(result.toString());
+                //JSONObject result = results.getJSONObject(i);
+
+
+                int id = result.getInt("id");
+                int cat = result.getInt("id_cat");
+                int user = result.getInt("id_user");
+                //int quantity = result.getInt("quantity");
+                String nom = result.getString("nomProd");
+                double prix = result.getDouble("prix");
+                String img = result.getString("url_img");
+                Produit produit = new Produit();
+
+
+
+
+//                ReadableByteChannel readChannel = Channels.newChannel(new URL(img).openStream());
+//                FileOutputStream fileOS = new FileOutputStream("src/main/resources/com/example/flashmarket/tmp_file"+nombre+".jpg");
+//                FileChannel writeChannel = fileOS.getChannel();
+//                writeChannel
+//                        .transferFrom(readChannel, 0, Long.MAX_VALUE);
+//
+//                Files.copy(Path.of("src/main/resources/com/example/flashmarket/tmp_file"+nombre+".jpg"), Path.of("src/main/resources/com/example/flashmarket/tmp/tmp_file"+nombre+".jpg"), StandardCopyOption.REPLACE_EXISTING);
+                String urlTmpFile = "tmp/tmp_file"+(nombre-1)+".jpg";
+                //produit.setImgSrc(HelloApplication.class.getResource(urlTmpFile).toExternalForm());
+                produit.setImgSrc("file:///C:/Users/Divad/Desktop/FlashMarket/src/main/resources/com/example/flashmarket/tmp/tmp_file"+(nombre-1)+".jpg");
+                //produit.setImgSrc(img);
+                produit.setPrice(prix);
+                produit.setName(nom);
+                produit.setColor(colors[j]);
+                j++;
+                if (j == 9)
+                    j = 0;
+                resultOfRequest.add(produit);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resultOfRequest;
+    }
+
+
+    public void addFiles(ArrayList<String> images) throws Exception{
+
+        int number = nombre;
+
+        for (int i=0; i<images.size(); i++) {
+
+            ReadableByteChannel readChannel = Channels.newChannel(new URL(images.get(i)).openStream());
+            FileOutputStream fileOS = new FileOutputStream("src/main/resources/com/example/flashmarket/tmp_file"+number+".jpg");
+            FileChannel writeChannel = fileOS.getChannel();
+            writeChannel
+                    .transferFrom(readChannel, 0, Long.MAX_VALUE);
+
+            Files.copy(Path.of("src/main/resources/com/example/flashmarket/tmp_file"+number+".jpg"), Path.of("src/main/resources/com/example/flashmarket/tmp/tmp_file"+number+".jpg"), StandardCopyOption.REPLACE_EXISTING);
+//            String urlTmpFile = "tmp/tmp_file"+nombre+".jpg";
+//            produit.setImgSrc(HelloApplication.class.getResource(urlTmpFile).toExternalForm());
+            number++;
+        }
+    }
+
+    public String getOthersDetailsProduct(Produit produit) {
+
+        String url;
+        switch (produit.getCategory()) {
+            case 1:
+
+        }
+        return null;
+    }
+
+
+    public StringBuffer urlRequest(String urlR) throws IOException {
+        HttpURLConnection connection;
+        StringBuffer respnseContent = new StringBuffer();
+        BufferedReader reader;
+        String line;
+        List<Produit> resultOfRequest = new ArrayList<>();
+
+        //try {
+            //URL url = new URL("https://tpteam3.000webhostapp.com/java/listproduct.php");
+            URL url = new URL(urlR);
+            connection = (HttpURLConnection) url.openConnection();
+
+            connection.setRequestMethod("POST");
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+
+            int status = connection.getResponseCode();
+            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                respnseContent.append(line);
+            }
+            reader.close();
+
+            return respnseContent;
     }
 
 }

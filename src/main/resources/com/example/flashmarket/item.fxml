@@ -21,9 +21,9 @@
             </ImageView>
             <HBox prefHeight="51.0" prefWidth="185.0">
                <children>
-                  <Label fx:id="nameLabel" prefHeight="49.0" prefWidth="137.0" text="Cherry">
+                  <Label fx:id="nameLabel" prefHeight="23.0" prefWidth="94.0" text="Cherry">
                      <font>
-                        <Font name="Cambria" size="18.0" />
+                        <Font name="Cambria" size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="10.0" />

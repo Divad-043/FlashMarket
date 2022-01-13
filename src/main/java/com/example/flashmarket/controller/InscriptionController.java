@@ -1,6 +1,7 @@
 package com.example.flashmarket.controller;
 
 import com.example.flashmarket.HelloApplication;
+import com.example.flashmarket.models.Data;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.rest.api.v2010.account.ValidationRequest;
@@ -36,12 +37,19 @@ public class InscriptionController {
     public TextField address;
     public Button btnInscription;
     public Label labelError;
+    public Button btnConfirmationCode;
+    public TextField codeConfirmation;
+    public Label labelErrorCode;
+
+    //public int code = (int) (Math.random()*100000);;
+
 
     // When the button inscription is clicked
     public void inscriptionClick(ActionEvent actionEvent) throws Exception {
 
+        System.out.println(Data.code);
+
         URL url = new URL("https://tpteam3.000webhostapp.com/java/register.php");
-        int code = (int) (Math.random()*100000);
 
         if (fieldVerification()) {
             if (Objects.equals(password.getText(), cpassword.getText())) {
@@ -71,7 +79,7 @@ public class InscriptionController {
                 // Add a number
                 //addANumber();
                 // send a sms
-                //sendSms(code);
+                sendSms(Data.code);
 
                 //read the response
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
@@ -87,7 +95,7 @@ public class InscriptionController {
                 System.out.println(success);
 
                 if (success){
-                    Parent root = FXMLLoader.load(HelloApplication.class.getResource("connexion.fxml"));
+                    Parent root = FXMLLoader.load(HelloApplication.class.getResource("phone-confirmation.fxml"));
                     Stage window = (Stage) btnInscription.getScene().getWindow();
                     window.setScene(new Scene(root));
                 } else
@@ -126,9 +134,9 @@ public class InscriptionController {
         final String AUTH_TOKEN = "94f1695586c22cb0efac94a8cbadbaa8";
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
             Message message = Message.creator(
-                            new com.twilio.type.PhoneNumber(phone.getText()),
+                            new com.twilio.type.PhoneNumber("+237"+phone.getText()),
                             "MG172f5be4031c8885459301eab0043ad7",
-                            String.valueOf(code))
+                            String.valueOf("Votre code de confirmation est " + code))
                     .create();
 
             System.out.println(message.getSid());
@@ -144,5 +152,19 @@ public class InscriptionController {
                 .create();
 
         System.out.println(validationRequest.getFriendlyName());
+    }
+
+    public void confirmationCodeClick(ActionEvent actionEvent) throws IOException {
+
+        if (Objects.equals(codeConfirmation.getText(), "") || Integer.parseInt(codeConfirmation.getText()) != Data.code) {
+            System.out.println(codeConfirmation.getText());
+            System.out.println(Data.code);
+            labelErrorCode.setText("Les codes ne correspondent pas...");
+        } else {
+            System.out.println("oui");
+            Parent root = FXMLLoader.load(HelloApplication.class.getResource("connexion.fxml"));
+            Stage window = (Stage) btnConfirmationCode.getScene().getWindow();
+            window.setScene(new Scene(root));
+        }
     }
 }

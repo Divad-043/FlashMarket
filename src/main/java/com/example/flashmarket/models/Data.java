@@ -5,6 +5,18 @@ import java.util.List;
 
 public class Data {
 
+    public static int code = (int) (Math.random()*100000);
+
+    public static List<String> colors;
+
+    public static String[] color = {
+            "6A7324","A7745B","F16C31","291D36", "FB5D03", "80080C", "FFB605", "5F060E","E7C00F"
+    };
+
+    public static void setColors(List<String> colors) {
+        Data.colors = colors;
+    }
+
     public static List<Fruit> getDataPhone() {
         List<Fruit> phones = new ArrayList<>();
         Fruit phone;
