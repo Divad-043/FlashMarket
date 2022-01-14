@@ -6,12 +6,12 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashmarket.Addprod">
    <children>
@@ -22,32 +22,43 @@
                   <Image url="@images/OIP.png" />
                </image>
             </ImageView>
+            <Label alignment="CENTER" layoutX="53.0" layoutY="333.0" prefHeight="49.0" prefWidth="190.0" text="Flash Market" textFill="#f81d1d">
+               <font>
+                  <Font name="MV Boli" size="23.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="505.0" layoutY="125.0" prefHeight="100.0" prefWidth="284.0" style="-fx-blend-mode: #358bd6;" text="ADD PRODUCT" textFill="#3b55db" textOverrun="CLIP">
+      <Label alignment="CENTER" layoutX="489.0" layoutY="118.0" lineSpacing="10.0" prefHeight="90.0" prefWidth="318.0" style="-fx-border-color: #358bd6; -fx-background-color: #f0f0c7;" text="ADD PRODUCT" textFill="#5765adf8" textOverrun="CENTER_WORD_ELLIPSIS" underline="true">
          <font>
-            <Font name="DejaVuMathTeXGyre-Regular" size="28.0" />
+            <Font name="Franklin Gothic Medium Italic" size="43.0" />
          </font>
       </Label>
       <TextField alignment="TOP_LEFT" layoutX="488.0" layoutY="257.0" prefHeight="29.0" prefWidth="318.0" promptText="Name" style="-fx-background-color: #f0f0c7;">
          <font>
-            <Font name="System Italic" size="13.0" />
+            <Font name="Consolas Bold Italic" size="13.0" />
          </font>
       </TextField>
       <TextField alignment="TOP_LEFT" layoutX="488.0" layoutY="312.0" prefHeight="29.0" prefWidth="318.0" promptText="Price" style="-fx-background-color: #f0f0c7;">
          <font>
-            <Font name="System Italic" size="13.0" />
+            <Font name="Consolas Bold Italic" size="13.0" />
          </font>
       </TextField>
       <ComboBox layoutX="488.0" layoutY="362.0" prefHeight="29.0" prefWidth="318.0" promptText="Category" style="-fx-background-color: #f0f0c7;" />
       <Button layoutX="584.0" layoutY="421.0" mnemonicParsing="false" mouseTransparent="true" prefHeight="49.0" prefWidth="126.0" style="-fx-background-color: #358bd6;" text="NEXT">
          <cursor>
-            <Cursor fx:constant="DEFAULT" />
+            <Cursor fx:constant="MOVE" />
          </cursor>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <effect>
+            <GaussianBlur radius="2.23" />
+         </effect>
       </Button>
-      <Label alignment="CENTER" layoutX="608.0" layoutY="211.0" prefHeight="29.0" prefWidth="79.0" text="STEP 1" textFill="#d7231a" />
+      <Label alignment="CENTER" layoutX="608.0" layoutY="211.0" prefHeight="29.0" prefWidth="79.0" text="1st STEP" textFill="#d7231a">
+         <font>
+            <Font name="Consolas Italic" size="12.0" />
+         </font></Label>
    </children>
 </AnchorPane>
