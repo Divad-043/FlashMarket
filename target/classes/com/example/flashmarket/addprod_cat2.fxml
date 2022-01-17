@@ -20,6 +20,11 @@
                   <Image url="@images/OIP.png" />
                </image>
             </ImageView>
+            <Label alignment="CENTER" layoutX="53.0" layoutY="333.0" prefHeight="49.0" prefWidth="190.0" text="Flash Market" textFill="#f81d1d">
+               <font>
+                  <Font name="MV Boli" size="23.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Label alignment="CENTER" layoutX="505.0" layoutY="125.0" prefHeight="100.0" prefWidth="284.0" style="-fx-blend-mode: #358bd6;" text="ADD PRODUCT" textFill="#3b55db" textOverrun="CLIP">
@@ -61,5 +66,10 @@
             <Font name="System Italic" size="13.0" />
          </font>
       </TextField>
+      <Label alignment="CENTER" layoutX="488.0" layoutY="110.0" prefHeight="101.0" prefWidth="318.0" style="-fx-blend-mode: #358bd6; -fx-border-color: #358bd6; -fx-background-color: #f0f0c7;" text="ADD PRODUCT" textFill="#3b55db" textOverrun="CLIP">
+         <font>
+            <Font name="Franklin Gothic Medium Italic" size="42.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
