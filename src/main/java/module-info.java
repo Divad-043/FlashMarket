@@ -3,12 +3,12 @@ module FlashMarket {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
-    //requires javafx.web;
-    //requires com.fasterxml.jackson.core;
+    requires javafx.web;
+    requires com.fasterxml.jackson.core;
     requires twilio;
     requires org.json;
-    //requires transitive jakarta.activation;
-    //requires javax.activation;
+    //requires jakarta.activation;
+    requires java.activation;
 
     exports com.example.flashmarket to javafx.graphics;
     exports com.example.flashmarket.models;

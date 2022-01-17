@@ -5,6 +5,7 @@ package com.example.flashmarket;
 import com.example.flashmarket.controller.InitPreloader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -25,8 +26,10 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //primaryStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("connexion.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("connexion.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("connexion.fxml"));
+        Scene scene = new Scene(root);
+        //Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
         stage.setTitle("FlashMarket");
         stage.setResizable(true);
         stage.setScene(scene);

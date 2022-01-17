@@ -2,7 +2,6 @@ package com.example.flashmarket.controller;
 
 import com.example.flashmarket.HelloApplication;
 import com.example.flashmarket.models.Phone;
-import com.example.flashmarket.models.Produit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -32,17 +31,16 @@ public class ItemController {
         myListener.onClickListener(fruit);
     }
 
-    private Produit fruit;
+    private Fruit fruit;
     private Fruit phone;
     private MyListener myListener;
 
-    public void setData(Produit fruit, MyListener myListener) {
+    public void setData(Fruit fruit, MyListener myListener) {
         this.fruit = fruit;
         this.myListener = myListener;
         nameLabel.setText(fruit.getName());
         priceLable.setText(Main.CURRENCY + fruit.getPrice());
-        //Image image = new Image(HelloApplication.class.getResource("images/"+fruit.getImgSrc()).toExternalForm());
-        Image image = new Image(fruit.getImgSrc());
+        Image image = new Image(HelloApplication.class.getResource("images/"+fruit.getImgSrc()).toExternalForm());
         //System.out.println(fruit.getImgSrc());
         img.setImage(image);
     }

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,96 +14,106 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashmarket.controller.InscriptionController">
    <children>
-      <Pane prefHeight="600.0" prefWidth="513.0" style="-fx-background-color: #58C1E9;">
+      <Pane prefHeight="600.0" prefWidth="513.0" style="-fx-background-color: #58C1E9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label graphicTextGap="20.0" layoutX="143.0" layoutY="398.0" prefHeight="65.0" prefWidth="254.0" text="Flash Market" textAlignment="CENTER" textFill="#c42e14" textOverrun="CLIP">
+            <Label graphicTextGap="20.0" layoutX="137.0" layoutY="428.0" prefHeight="65.0" prefWidth="254.0" text="Flash Market" textAlignment="CENTER" textFill="#c42e14" textOverrun="CLIP">
                <font>
                   <Font name="MV Boli" size="40.0" />
                </font>
             </Label>
-            <ImageView fitHeight="337.0" fitWidth="359.0" layoutX="101.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="337.0" fitWidth="359.0" layoutX="79.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/OIP.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="593.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
-         <image>
-            <Image url="@images/R.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="username" layoutX="623.0" layoutY="250.0" prefHeight="32.0" prefWidth="314.0" promptText="Nom d'utilisateur">
-         <font>
-            <Font name="Consolas Bold Italic" size="12.0" />
-         </font>
-      </TextField>
-      <Button fx:id="btnInscription" layoutX="712.0" layoutY="482.0" mnemonicParsing="false" onAction="#inscriptionClick" prefHeight="44.0" prefWidth="113.0" style="-fx-background-color: #58C1E9;" text="S'INSCRIRE" textFill="#272525" />
-      <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="591.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
-         <image>
-            <Image url="@images/R.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="130.0" fitWidth="183.0" layoutX="718.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/R (1).png" />
-         </image>
-      </ImageView>
-      <Label layoutX="700.0" layoutY="151.0" prefHeight="44.0" prefWidth="166.0" text="INSCRIPTION" textAlignment="CENTER" textFill="#21a0d7">
-         <font>
-            <Font name="Cambria Math" size="28.0" />
-         </font>
-      </Label>
-      <Button layoutX="960.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" style="-fx-background-color: #FC5353;" text="X" textFill="WHITE" />
-      <Label layoutX="663.0" layoutY="552.0" prefHeight="17.0" prefWidth="120.0" text="Déjà un Compte? ">
-         <font>
-            <Font name="Consolas" size="12.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="password" layoutX="623.0" layoutY="291.0" prefHeight="32.0" prefWidth="314.0" promptText="Mot de Passe">
-         <font>
-            <Font name="Consolas Bold Italic" size="12.0" />
-         </font>
-      </PasswordField>
-      <Hyperlink fx:id="toConnexion" layoutX="778.0" layoutY="549.0" onAction="#goToConnexion" text="Se Connecter">
-         <font>
-            <Font name="Consolas Bold Italic" size="13.0" />
-         </font>
-      </Hyperlink>
-      <PasswordField fx:id="cpassword" layoutX="623.0" layoutY="331.0" prefHeight="32.0" prefWidth="314.0" promptText="Confirmer Mot de Passe">
-         <font>
-            <Font name="Consolas Bold Italic" size="12.0" />
-         </font>
-      </PasswordField>
-      <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="591.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
-         <image>
-            <Image url="@images/R.jpg" />
-         </image>
-      </ImageView>
-      <TextField fx:id="phone" layoutX="623.0" layoutY="371.0" prefHeight="32.0" prefWidth="314.0" promptText="Numéro de Téléphone">
-         <font>
-            <Font name="Consolas Bold Italic" size="12.0" />
-         </font>
-      </TextField>
-      <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="592.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
-         <image>
-            <Image url="@images/Phone Icon-01.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="address" layoutX="623.0" layoutY="416.0" prefHeight="32.0" prefWidth="314.0" promptText="Adresse (Quartier, Ville)">
-         <font>
-            <Font name="Consolas Bold Italic" size="12.0" />
-         </font>
-      </TextField>
-      <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="591.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
-         <image>
-            <Image url="@images/carte-de-localisation_318-28579.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="labelError" layoutX="626.0" layoutY="210.0" prefHeight="17.0" prefWidth="314.0" textFill="#dc1313">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
+      <AnchorPane layoutX="507.0" layoutY="6.0" prefHeight="593.0" prefWidth="487.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="90.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
+               <image>
+                  <Image url="@images/R.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="username" layoutX="139.0" layoutY="206.0" prefHeight="32.0" prefWidth="314.0" promptText="Nom">
+               <font>
+                  <Font name="Consolas Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btnInscription" layoutX="139.0" layoutY="470.0" mnemonicParsing="false" onAction="#inscriptionClick" prefHeight="44.0" prefWidth="314.0" style="-fx-background-color: #58C1E9;" text="S'INSCRIRE" textFill="#272525" />
+            <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="88.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
+               <image>
+                  <Image url="@images/R.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="114.0" fitWidth="130.0" layoutX="216.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/R (1).png" />
+               </image>
+            </ImageView>
+            <Label layoutX="14.0" layoutY="1.0" prefHeight="56.0" prefWidth="404.0" text="Créer nouveau Compte" textAlignment="CENTER" textFill="#21a0d7" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Cambria Math" size="28.0" />
+               </font>
+            </Label>
+            <Button layoutX="433.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" style="-fx-background-color: #FC5353;" text="X" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <PasswordField fx:id="password" layoutX="139.0" layoutY="338.0" prefHeight="32.0" prefWidth="314.0" promptText="Mot de Passe">
+               <font>
+                  <Font name="Consolas Bold Italic" size="12.0" />
+               </font>
+            </PasswordField>
+            <Hyperlink fx:id="toConnexion" contentDisplay="CENTER" layoutX="235.0" layoutY="542.0" onAction="#goToConnexion" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #42B72A; -fx-background-radius: 0.3em;" text="Se Connecter" textAlignment="CENTER" textFill="#fcfcfc">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Hyperlink>
+            <PasswordField fx:id="cpassword" layoutX="139.0" layoutY="384.0" prefHeight="32.0" prefWidth="314.0" promptText="Confirmer Mot de Passe">
+               <font>
+                  <Font name="Consolas Bold Italic" size="12.0" />
+               </font>
+            </PasswordField>
+            <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="88.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
+               <image>
+                  <Image url="@images/R.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="phone" layoutX="140.0" layoutY="292.0" prefHeight="32.0" prefWidth="314.0" promptText="Numéro de Téléphone">
+               <font>
+                  <Font name="Consolas Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="89.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
+               <image>
+                  <Image url="@images/Phone Icon-01.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="address" layoutX="139.0" layoutY="428.0" prefHeight="32.0" prefWidth="314.0" promptText="Adresse (Quartier, Ville)">
+               <font>
+                  <Font name="Consolas Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="88.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
+               <image>
+                  <Image url="@images/carte-de-localisation_318-28579.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelError" layoutX="139.0" layoutY="514.0" prefHeight="17.0" prefWidth="314.0" textFill="#dc1313" AnchorPane.bottomAnchor="67.0" AnchorPane.rightAnchor="34.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="158.0" layoutY="531.0" prefHeight="0.0" prefWidth="273.0" />
+            <TextField fx:id="username1" layoutX="138.0" layoutY="248.0" prefHeight="32.0" prefWidth="314.0" promptText="Prenom">
+               <font>
+                  <Font name="Consolas Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="90.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
+               <image>
+                  <Image url="@images/R.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
