@@ -7,6 +7,7 @@ module FlashMarket {
     requires com.fasterxml.jackson.core;
     requires twilio;
     requires org.json;
+    requires java.sql;
     //requires jakarta.activation;
     //requires java.activation;
 
