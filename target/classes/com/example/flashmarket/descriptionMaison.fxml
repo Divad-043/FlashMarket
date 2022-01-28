@@ -49,7 +49,7 @@
       <TextField fx:id="lblNbrCuisine" layoutX="326.0" layoutY="306.0" prefHeight="24.0" prefWidth="266.0" />
       <TextField fx:id="lblNbrDouche" layoutX="326.0" layoutY="361.0" prefHeight="24.0" prefWidth="266.0" />
       <TextField fx:id="lblNbrLocalite" layoutX="326.0" layoutY="414.0" prefHeight="24.0" prefWidth="266.0" />
-      <Button fx:id="btnSoumettreMaison" layoutX="326.0" layoutY="466.0" mnemonicParsing="false" onAction="#btnSoumettreMaison" prefHeight="30.0" prefWidth="266.0" style="-fx-background-color: #32DED8;" text="Soumettre" textFill="WHITE">
+      <Button fx:id="btnSoumettreProduit" layoutX="326.0" layoutY="466.0" mnemonicParsing="false" onAction="#btnClickOnSoumettreProduit" prefHeight="30.0" prefWidth="266.0" style="-fx-background-color: #32DED8;" text="Soumettre" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
