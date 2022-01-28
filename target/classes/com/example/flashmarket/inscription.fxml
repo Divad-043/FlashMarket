@@ -103,7 +103,8 @@
                </font>
             </Label>
             <Separator layoutX="158.0" layoutY="550.0" prefHeight="7.0" prefWidth="273.0" />
-            <TextField fx:id="lblLastName" layoutX="138.0" layoutY="226.0" prefHeight="32.0" prefWidth="314.0" promptText="Prenom">
+            <TextField fx:id="lblLastName" layoutX="138.0" layoutY="226.0" prefHeight="32.0" prefWidth="314.0"
+                       promptText="Prenom">
                <font>
                   <Font name="Consolas Bold Italic" size="12.0" />
                </font>
@@ -118,7 +119,8 @@
                   <Font name="Consolas Bold Italic" size="12.0" />
                </font>
             </TextField>
-            <ImageView fx:id="lblSexe" fitHeight="16.0" fitWidth="20.0" layoutX="92.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
+            <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="92.0" layoutY="280.0"
+                       pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #07506B;">
                <image>
                   <Image url="@images/sexe.jpg" />
                </image>

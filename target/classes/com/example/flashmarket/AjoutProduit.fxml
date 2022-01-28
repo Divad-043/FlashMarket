@@ -75,6 +75,7 @@
             </Label>
             <ComboBox fx:id="comboDevise" layoutX="573.0" layoutY="117.0" onAction="#selectDevice" prefHeight="24.0" prefWidth="89.0" promptText="FCFA" />
             <Button layoutX="367.0" layoutY="402.0" mnemonicParsing="false" onAction="#annuler" style="-fx-background-color: #32DED8;" text="Recommencer" />
+            <Label fx:id="lblErreur" alignment="CENTER" layoutX="283.0" layoutY="450.0" prefHeight="16.0" prefWidth="442.0" text="Label" visible="false" />
          </children>
       </AnchorPane>
    </children>

@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="527.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashmarket.controller.DescriptionHabit">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #32DED8;" text="Completer les Information de l'Habit" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -33,7 +32,7 @@
       </Label>
       <TextField fx:id="lblTaille" layoutX="220.0" layoutY="303.0" prefHeight="24.0" prefWidth="236.0" />
       <ComboBox fx:id="comboType" layoutX="220.0" layoutY="167.0" onAction="#comboType" prefHeight="24.0" prefWidth="236.0" promptText="Chemise" />
-      <Button fx:id="btnSoumettre" layoutX="220.0" layoutY="358.0" mnemonicParsing="false" onAction="#btnSoumettre" prefHeight="30.0" prefWidth="236.0" style="-fx-background-color: #32DED8;" text="Soumettre" textFill="WHITE">
+      <Button fx:id="btnSoumettreProduit" layoutX="220.0" layoutY="358.0" mnemonicParsing="false" onAction="#btnClickOnSoumettreProduit" prefHeight="30.0" prefWidth="236.0" style="-fx-background-color: #32DED8;" text="Soumettre" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

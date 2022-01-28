@@ -53,7 +53,7 @@ public class AjoutProduit implements Initializable {
     private TextField produitPrice;
 
     String nom, descripton, categorie, device;
-    int idUser = (int) (Math.random()*4) + 1, idCategorie;
+    int idUser = (int) (Math.random()*4) + 1, idCategorie = 1;
     float prix;
 
     void btnClickOnSoumettreProduit() throws SQLException {
@@ -62,6 +62,7 @@ public class AjoutProduit implements Initializable {
         descripton = produitDescribe.getText();
         categorie = selectCategorie(null);
         prix = Float.parseFloat(produitPrice.getText());
+        idCategorie = 1;
         if(comboDevise.getValue() == null) device = "FCFA";
         else
             device = (String) comboDevise.getValue();
@@ -148,7 +149,7 @@ public class AjoutProduit implements Initializable {
 
             root = FXMLLoader.load(getClass().getResource("/com/example/flashmarket/descriptionTelephone.fxml"));
             stage = new Stage();
-            stage.setTitle("Ajout de Téléphones - FlashMarket");
+            stage.setTitle("FlashMarket - Ajout de Téléphones");
             stage.setScene(new Scene(root));
             stage.show();
 

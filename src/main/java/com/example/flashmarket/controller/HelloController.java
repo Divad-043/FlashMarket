@@ -78,7 +78,8 @@ public class HelloController {
                 String location = jsonObject.getString("location");
                 int phone = jsonObject.getInt("phone");
 
-                Parent root = FXMLLoader.load(HelloApplication.class.getResource("market.fxml"));
+                //Parent root = FXMLLoader.load(HelloApplication.class.getResource("market.fxml"));
+                Parent root = FXMLLoader.load(HelloApplication.class.getResource("/com/example/flashmarket/Accueil.fxml"));
                 Stage window = (Stage) btnConnexion.getScene().getWindow();
                 window.setScene(new Scene(root));
             } else
