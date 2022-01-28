@@ -3,6 +3,32 @@
     -fx-background-radius: 100;
 }
 
+.white-background{
+    -fx-background-color: #FFF;
+}
+
+.round-item-layout{
+    -fx-border-radius: 1.5;
+    -fx-border-color: #D7D7D7
+}
+
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color: #D7D7D7;
+}
+
+.selected{
+    -fx-background-color: #F3F3F3;
+}
+
+.mouse-moved:hover{
+    -fx-background-color: #E4E4E4;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);
+}
+
 .transparent{
     -fx-background-color: rgba(0,0,0,0);
 }

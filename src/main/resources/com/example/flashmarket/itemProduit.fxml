@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="boxProduit" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="176.0" prefWidth="487.0" spacing="15.0" style="-fx-border-radius: #D7D7D7;" styleClass="round-item-layout" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashmarket.controller.ItemProduit">
+   <children>
+      <ImageView fx:id="imgProduit" fitHeight="189.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/phones/Phone1.png" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="191.0" prefWidth="296.0">
+         <children>
+            <Label fx:id="nameProduit" prefHeight="55.0" prefWidth="235.0" text="Nom de Produit" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="describeProduit" prefHeight="62.0" prefWidth="292.0" text="Une petite description du produit" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="296.0" spacing="5.0">
+               <children>
+                  <Label fx:id="lblPrice" text="120000" />
+                  <Label fx:id="lblDevice" text="FCFA" />
+               </children>
+            </HBox>
+            <Pane prefHeight="42.0" prefWidth="296.0">
+               <children>
+                  <ImageView fx:id="imgNoteStar" fitHeight="34.0" fitWidth="80.0" layoutX="4.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/evaluaton/5-star-icon.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblEtat" layoutX="194.0" layoutY="13.0" prefHeight="20.0" prefWidth="102.0" text="Etat: ">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </children>
+</HBox>

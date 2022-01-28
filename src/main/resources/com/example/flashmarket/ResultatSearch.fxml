@@ -34,7 +34,7 @@
                   <Rectangle2D height="1.0" minX="1.0" minY="1.0" width="1.0" />
                </viewport>
                <image>
-                  <Image url="@../../../../../resources/com/example/flashmarket/images/search.png" />
+                  <Image url="@images/search.png" />
                </image>
             </ImageView>
             <TextField fx:id="valSearch" layoutX="358.0" layoutY="22.0" prefHeight="34.0" prefWidth="221.0" promptText="Entrez un nom de produit" style="-fx-background-color: #fcfcfc; -fx-border-color: #606154; -fx-background-radius: 5em; -fx-border-radius: 2em;" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="22.0">
@@ -66,7 +66,7 @@
                      <children>
                         <ImageView fitHeight="102.0" fitWidth="152.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../resources/com/example/flashmarket/images/no-image-icon.png" />
+                              <Image url="@images/no-image-icon.png" />
                            </image>
                         </ImageView>
                      </children>

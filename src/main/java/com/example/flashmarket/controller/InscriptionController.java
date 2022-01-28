@@ -1,6 +1,7 @@
 package com.example.flashmarket.controller;
 
 import com.example.flashmarket.HelloApplication;
+import com.example.flashmarket.models.User;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.rest.api.v2010.account.ValidationRequest;
@@ -36,11 +37,14 @@ public class InscriptionController {
     public TextField address;
     public Button btnInscription;
     public Label labelError;
+    public Label lblSexe;
+    public Label lblLastName;
 
     public void inscriptionClick(ActionEvent actionEvent) throws Exception {
 
         URL url = new URL("https://tpteam3.000webhostapp.com/java/register.php");
         int code = (int) (Math.random()*1000);
+        User user = new User();
 
         if (fieldVerification()) {
             if (Objects.equals(password.getText(), cpassword.getText())) {
@@ -89,6 +93,12 @@ public class InscriptionController {
                     Parent root = FXMLLoader.load(HelloApplication.class.getResource("connexion.fxml"));
                     Stage window = (Stage) btnInscription.getScene().getWindow();
                     window.setScene(new Scene(root));
+
+                    user.setName(this.username.toString());
+                    user.setLastName(this.lblLastName.toString());
+                    user.setPhone(this.phone.toString());
+                    user.setEmail(this.lblLastName.toString()+"@"+this.username+".com");
+                    user.setLocation(this.address.toString());
                 } else
                     labelError.setText("Un probleme est survenu. Veuillez reessayer svp");
             } else {

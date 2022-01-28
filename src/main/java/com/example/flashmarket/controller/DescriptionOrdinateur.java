@@ -1,5 +1,7 @@
 package com.example.flashmarket.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +21,7 @@ public class DescriptionOrdinateur implements Initializable {
     private Button btnSoumettreOrd;
 
     @FXML
-    private ComboBox<?> comboEtatOrd;
+    private ComboBox<String> comboEtatOrd;
 
     @FXML
     private TextField marqueOrd;
@@ -47,6 +49,7 @@ public class DescriptionOrdinateur implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ObservableList<String> listEtats = FXCollections.observableArrayList("Occasion", "Neuf");
+        comboEtatOrd.setItems(listEtats);
     }
 }

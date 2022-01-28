@@ -1,8 +1,6 @@
 package com.example.flashmarket.controller;
 
 import com.example.flashmarket.HelloApplication;
-import com.example.flashmarket.models.Phone;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

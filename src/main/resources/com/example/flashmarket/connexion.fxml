@@ -54,7 +54,7 @@
               </ImageView>
               <ImageView fitHeight="143.0" fitWidth="140.0" layoutX="207.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                      <Image url="@images/R (1).png" />
+                      <Image url="@images/R2.png" />
                   </image>
               </ImageView>
               <Label layoutX="11.0" layoutY="-5.0" prefHeight="83.0" prefWidth="437.0" text="Connecter pour accedé au contenue" textAlignment="CENTER" textFill="#2a9ad4" wrapText="true" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="0.0">
